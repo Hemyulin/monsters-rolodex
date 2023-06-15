@@ -5,7 +5,8 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
-    this.state = { name: 'Daniel' };
+    this.state = { name: 'Daniel',
+  company: 'ZTM'};
   }
   render() {
     return (
@@ -13,10 +14,10 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Hi {this.state.name}
+            Hi {this.state.name}, I work at {this.state.company}
           </p>
           <button onClick={()=> {
-            this.setState({name: 'Daniel'})
+            this.setState({name: 'Adam'})
           }}>
             Change name
           </button>
