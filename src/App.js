@@ -1,30 +1,55 @@
-import { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
 
 class App extends Component {
   constructor() {
-    super();
-    this.state = { name: 'Daniel',
-  company: 'ZTM'};
+    super()
+
+    this.state = {
+      monsters: [],
+    }
+    console.log('constructor')
   }
+
+  componentDidMount() {
+    console.log('componentDidMount')
+    fetch('https://jsonplaceholder.typicode.com/users').then((response) =>
+      response.json().then((users) =>
+        this.setState(() => {
+          return { monsters: users }
+        }),
+      ),
+    )
+  }
+
   render() {
+    console.log('render')
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hi {this.state.name}, I work at {this.state.company}
-          </p>
-          <button onClick={()=> {
-            this.setState({name: 'Adam'})
-          }}>
-            Change name
-          </button>
-        </header>
+        <input
+          className="search-box"
+          type="search"
+          placeholder="search monsters"
+          onChange={(event) => {
+            console.log(event.target.value)
+            const filteredMonsters = this.state.monsters.filter((monster) => {
+              return monster.name.includes(events.target.value)
+            })
+            // this.state.monsters.filter(event.target.value)
+            // console.log(event.target.value)
+          }}
+        />
+        {this.state.monsters.map((monster) => {
+          return (
+            <div key={monster.id}>
+              <h1>{monster.name}</h1>
+            </div>
+          )
+        })}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
