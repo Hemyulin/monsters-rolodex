@@ -1,7 +1,8 @@
-import { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
-import CardList from './components/card_list/card_list.component'
+import { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import './components/card-list/card-list.component';
+import CardList from './components/card-list/card-list.component';
 class App extends Component {
   constructor() {
     super()
@@ -45,7 +46,7 @@ class App extends Component {
     return (
       <div className="App">
         <input
-          className="search-box"
+          className="monsters-search-box"
           type="search"
           placeholder="search monsters"
           onChange={onSearchChange}
@@ -63,4 +64,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default App;
